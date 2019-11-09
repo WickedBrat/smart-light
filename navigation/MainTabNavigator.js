@@ -1,11 +1,14 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import AddNewDevice from '../screens/AddNewDevice';
+import Device from '../screens/Device';
+import LightBulb from '../screens/Devices/LightBulb';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -15,6 +18,9 @@ const config = Platform.select({
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
+    AddNewDevice: AddNewDevice,
+    Device: Device,
+    LightBulb: LightBulb
   },
   config
 );
@@ -67,7 +73,7 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
-const tabNavigator = createBottomTabNavigator({
+const tabNavigator = createDrawerNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
